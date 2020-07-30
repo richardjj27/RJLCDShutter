@@ -1,0 +1,34 @@
+g++ -o shutter_open shutter_open.cpp -lwiringPi
+g++ -o shutter_off shutter_off.cpp -lwiringPi
+
+#  if (SPDR == 1) {
+    digitalWrite(4, HIGH);
+    digitalWrite(2, LOW);
+#  }
+#  
+#  if (SPDR == 0) {
+#    digitalWrite(4, LOW);
+#    digitalWrite(2, LOW);
+#  }
+
+------------
+
+send number to arduino
+
+zero = off (and stay off)
+99 = on (and stay on)
+1 = on (and switch off if no repeat received withn 10 seconds)
+
+
+
+on arduino
+
+in interrupt/buffer
+put value in buffer
+if 1, set status = 1 and timer = 10
+if 99, set status = 1 and timer = 0
+
+in repeat loop
+if status 1 = switch on & if timer > 0, timer--
+if status 1 and timer = 0 status = 0
+if status 0 = switch off
