@@ -37,6 +37,7 @@ void loop(void)
     ShutterOpen = 2;
     delay(500);
   }
+  
   if (ShutterOpen == 2)
   {
     digitalWrite(4, HIGH);
@@ -44,6 +45,7 @@ void loop(void)
     ShutterOpen = 0;
     delay(500);
   }
+  
   if (ShutterOpen == 1)
   {
     digitalWrite(4, LOW);
